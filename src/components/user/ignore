@@ -1,0 +1,16 @@
+      <div className="card bg-light">
+        {/*  */}
+        <div className="card-header">{user.username}</div>
+        {/*  */}
+        <div className="card-body">
+          <div className="card-text">Name: {user.name}</div>
+          <hr />
+          <div className="card-text">Email: {user.email}</div>
+          <hr />
+          <div className="card-text">Email: {user.phone}</div>
+          <hr />
+          <div className="card-text">Email: {user.address}</div>
+          <hr />
+          <div className="card-text">Email: {user.email}</div>
+        </div>
+      </div>
