@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link, withRouter } from "react-router-dom";
 
 class Users extends Component {
   state = {
@@ -20,13 +21,15 @@ class Users extends Component {
   //     this.renderUsers(this.state.users);
   //   }
   // };
+
   renderUsers = (users) => (
     <React.Fragment>
       {users.map((user, i) => (
         <div className="card bg-light mb-3" key={i}>
           <div className="card-header">
             {" "}
-            <strong>User: </strong> {user.username}
+            <strong>User: </strong>{" "}
+            <Link to={`/user/${user.id}`}>{user.username}</Link>
           </div>
           <div className="card-body">Name: {user.name}</div>
         </div>
@@ -47,4 +50,4 @@ class Users extends Component {
   }
 }
 
-export default Users;
+export default withRouter(Users);
