@@ -25,7 +25,7 @@ class Users extends Component {
   renderUsers = (users) => (
     <React.Fragment>
       {users.map((user, i) => (
-        <div className="card bg-light mb-3" key={i}>
+        <div className="card bg-light mb-3 card-half" key={i}>
           <div className="card-header">
             {" "}
             <strong>User: </strong>{" "}
