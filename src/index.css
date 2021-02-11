@@ -41,7 +41,6 @@ button {
 }
 
 #mainNav {
-  position: absolute;
   border-bottom: 1px solid gray-200;
   background-color: #000000;
 }
@@ -52,7 +51,9 @@ button {
 #navBrand {
   color: #5a5a5a;
 }
-
+.fixed-top {
+  position: relative;
+}
 .navbar-toggler {
   font-size: 12px;
   font-weight: 800;
@@ -70,6 +71,23 @@ button {
 #get-users {
   border: 1px solid #5a5a5a;
 }
-.card {
+.card-half {
   width: 50%;
+}
+.user-detail {
+  text-transform: capitalize;
+  border: none;
+}
+.card-table {
+  margin: 0 auto;
+}
+.card,
+.card-table {
+  border: none;
+}
+.text-align-c {
+  text-align: center;
+}
+.btn-margin {
+  margin: 0 0.3rem;
 }
