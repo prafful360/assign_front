@@ -1,34 +1,26 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-// import Header from "./components/layout/Header";
+import { withRouter } from "react-router-dom";
+
 import Todos from "../../todo/Todos";
 import AddTodo from "../../todo/AddTodo";
-// import About from "./components/pages/About";
 
 // import "./App.scss";
 import axios from "axios";
+import Loader from "../../core/Loader";
 
-class App extends Component {
+class todoRender extends Component {
   state = {
     todos: [],
+    loading: false,
   };
 
   componentDidMount() {
+    this.setState({ loading: true });
+    const userId = this.props.match.params.userId;
     axios
-      .get("https://jsonplaceholder.typicode.com/todos?_limit=7")
-      .then((res) => this.setState({ todos: res.data }));
+      .get(`https://jsonplaceholder.typicode.com/users/${userId}/todos`)
+      .then((res) => this.setState({ todos: res.data, loading: false }));
   }
-
-  //custom delay for last todo being added
-  // componentDidUpdate(prevProps, prevState) {
-  //   // let todos = Array.from(document.querySelectorAll(".item-wrapper"));
-  //   // let lastEl = todos[prevState.todos.length];
-  //   // if (lastEl && prevState.todos.length !== 0) {
-  //   //   lastEl.style.transitionDelay = 0 + "s";
-  //   //   lastEl.style.transitionDuration = 0.3 + "s";
-  //   // }
-  // }
-
   //toggle complete
   markComplete = (id, e) => {
     this.setState({
@@ -103,17 +95,21 @@ class App extends Component {
         </div>
 
         <div className="card bg-light mt-4">
-          <Todos
-            todos={this.state.todos}
-            markComplete={this.markComplete}
-            delTodo={this.delTodo}
-            editText={this.editText}
-            saveText={this.saveText}
-          />
+          {this.state.loading ? (
+            <Loader />
+          ) : (
+            <Todos
+              todos={this.state.todos}
+              markComplete={this.markComplete}
+              delTodo={this.delTodo}
+              editText={this.editText}
+              saveText={this.saveText}
+            />
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(todoRender);

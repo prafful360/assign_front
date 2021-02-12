@@ -1,49 +1,87 @@
-import React from "react";
 import axios from "axios";
+import React, { Component } from "react";
 
-export default class addUser extends React.Component {
+class AddUser extends Component {
   state = {
+    username: "",
     name: "",
+    phone: "",
+    email: "",
   };
 
-  handleChange = (event) => {
-    this.setState({ name: event.target.value });
+  onChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-
-    const user = {
-      name: this.state.name,
-    };
-
-    axios
-      .post(`https://jsonplaceholder.typicode.com/users`, { user })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-      });
+  onSubmit = (e) => {
+    e.preventDefault();
+    window.confirm("Are you sure you want to add this user?");
+    this.props.addUser(
+      this.state.username,
+      this.state.name,
+      this.state.phone,
+      this.state.email
+    );
+    this.setState({
+      username: "",
+      name: "",
+      phone: "",
+      email: "",
+    });
   };
 
   render() {
+    const { username, name, phone, email } = this.state;
     return (
       <div className="container">
-        <form className="input-group mb-3" onSubmit={this.handleSubmit}>
-          <div className="input-group-prepend">
-            <label className="input-group-text">UserName:</label>
+        <form className="form-group" onSubmit={this.onSubmit}>
+          <div className="card-header">Add User</div>
+          <div className="card-body">
+            <input
+              type="text"
+              className="form-control"
+              name="username"
+              placeholder="Enter Username"
+              value={username}
+              onChange={this.onChange}
+            />
+            <input
+              type="text"
+              className="form-control"
+              name="name"
+              placeholder="Enter Name"
+              value={name}
+              onChange={this.onChange}
+            />
+            <input
+              type="number"
+              className="form-control"
+              name="phone"
+              placeholder="Enter Phone Number"
+              value={phone}
+              onChange={this.onChange}
+            />
+            <input
+              type="email"
+              className="form-control"
+              name="email"
+              placeholder="Enter Email"
+              value={email}
+              onChange={this.onChange}
+            />
+            <button
+              type="submit"
+              class="btn btn-primary mb-2"
+              onClick={this.onSubmit}
+            >
+              Submit
+            </button>
           </div>
-          <input
-            className="form-control"
-            type="text"
-            name="name"
-            onChange={this.handleChange}
-            placeholder="Add User"
-          />
-          <button className="btn bg-light input-group-append" type="submit">
-            Add
-          </button>
         </form>
       </div>
     );
   }
 }
+
+export default AddUser;

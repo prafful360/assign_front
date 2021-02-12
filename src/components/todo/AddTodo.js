@@ -24,7 +24,7 @@ export class AddTodo extends Component {
     return (
       <form onSubmit={this.onSubmit} className="form-group mt-5">
         <span onClick={this.onSubmit} className="add-btn">
-          <i className="fas fa-plus" />
+          Add
         </span>
         <input
           className="form-control form-control-lg"

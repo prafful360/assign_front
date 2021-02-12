@@ -17,30 +17,6 @@ class UserAlbum extends Component {
       const albums = res.data;
       this.setState({ albums });
     });
-    // const getAlbumDetail = axios.get(
-    //   `https://jsonplaceholder.typicode.com/photos?albumId=${this.state.albums.id}`
-    // );
-
-    // Promise.all([getAlbums, getAlbumDetail]).then(function (values) {
-    //   const albumId = res.data.id
-    // });
-
-    // getAlbumDetail.then((res) => {
-    //   const albumDetail = res.data;
-    //   this.setState({ albumDetail });
-    //   console.log(albumDetail);
-    //   // albumDetail.forEach((el) => {
-    //   //   if (el.albumId == 1) {
-    //   //     Object.entries(el)
-    //   //       .slice(0, 5)
-    //   //       .forEach(([key, val], index) => {
-    //   //         if (key == "url") {
-    //   //           console.log(key, val);
-    //   //         }
-    //   //       });
-    //   //   }
-    //   // });
-    // });
   }
 
   renderUserAlbums = (albums) => {

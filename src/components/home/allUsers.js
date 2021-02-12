@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import Loader from "../core/Loader";
+import AddUser from "./addUser";
 
 class Users extends Component {
   state = {
@@ -19,6 +20,21 @@ class Users extends Component {
         this.setState({ users: users, loading: false });
       });
   }
+  //create new todo
+  addUser = (username, name, phone, email) => {
+    axios
+      .post("https://jsonplaceholder.typicode.com/users/", {
+        username,
+        name,
+        phone,
+        email,
+      })
+      .then((res) =>
+        this.setState({
+          users: [...this.state.users, res.data],
+        })
+      );
+  };
 
   renderUsers = (users) => {
     if (users.length === "0") {
@@ -55,6 +71,7 @@ class Users extends Component {
           </div>
         </div>
         <hr className="container" />
+        <AddUser addUser={this.addUser} />
       </>
     );
   }
