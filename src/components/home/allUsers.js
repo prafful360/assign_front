@@ -8,6 +8,7 @@ class Users extends Component {
   state = {
     users: [],
     loading: false,
+    showAddUser: false,
   };
 
   async componentDidMount() {
@@ -34,6 +35,12 @@ class Users extends Component {
           users: [...this.state.users, res.data],
         })
       );
+  };
+
+  onClick = (e) => {
+    this.setState({
+      showAddUser: true,
+    });
   };
 
   renderUsers = (users) => {
@@ -69,9 +76,13 @@ class Users extends Component {
               this.renderUsers(this.state.users)
             )}{" "}
           </div>
+          <button className="btn btn-primary" onClick={this.onClick}>
+            Add User
+          </button>
         </div>
+
         <hr className="container" />
-        <AddUser addUser={this.addUser} />
+        {this.state.showAddUser ? <AddUser addUser={this.addUser} /> : ""}
       </>
     );
   }
