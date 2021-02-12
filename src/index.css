@@ -25,11 +25,20 @@ button {
   background-color: #dae0e5;
 }
 /* Media Queries */
-@media (min-width: 576px) {
+@media (min-width: 360px) {
+  .ml-s-3 {
+    margin-left: 1rem;
+  }
+  .card-half {
+    width: 100%;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  .card-half {
+    width: 50%;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -71,9 +80,7 @@ button {
 #get-users {
   border: 1px solid #5a5a5a;
 }
-.card-half {
-  width: 50%;
-}
+
 .user-detail {
   text-transform: capitalize;
   border: none;
@@ -90,4 +97,7 @@ button {
 }
 .btn-margin {
   margin: 0 0.3rem;
+}
+.title {
+  color: #b9b8b8;
 }

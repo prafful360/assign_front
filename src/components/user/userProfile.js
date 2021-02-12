@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
+import Loader from "../core/Loader";
 
 class userProfile extends Component {
   state = {
@@ -45,17 +46,6 @@ class userProfile extends Component {
             );
           }
         })}
-
-      {/* <ul className="card-body">
-        {Object.keys(add).map((address) => (
-          <>
-            <li className="card-text" key={address}>
-              {address}
-            </li>
-            <hr />
-          </>
-        ))}
-      </ul> */}
     </>
   );
   renderUserAdd = (add) => (
@@ -120,7 +110,7 @@ class userProfile extends Component {
     return (
       <>
         <div className="container">
-          {this.state.loading ? this.loader() : this.renderFormData()}
+          {this.state.loading ? <Loader /> : this.renderFormData()}
         </div>
       </>
     );

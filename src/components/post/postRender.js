@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { remove } from "./postDeleteApi";
+import Loader from "../core/Loader";
+// import { remove } from "./postDeleteApi";
 
 class postRender extends Component {
   state = {
@@ -51,10 +52,12 @@ class postRender extends Component {
       ))}
     </>
   );
+  //Todo Define API
   deletePost = () => {
     const postId = this.props.match.params.id;
-    // Delete API not defined
-    remove(postId);
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/post/${postId}`)
+      .then((res) => this.setState({ post: [] }));
   };
 
   deleteConfirmed = () => {
@@ -91,15 +94,9 @@ class postRender extends Component {
       </>
     );
   };
-  loader = () => (
-    <div className="container text-align-c">
-      <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-  );
+
   render() {
-    return <>{this.state.loading ? this.loader() : this.renderFormData()}</>;
+    return <>{this.state.loading ? <Loader /> : this.renderFormData()}</>;
   }
 }
 

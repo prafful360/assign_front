@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
+import Loader from "../../core/Loader";
 
 class UserPosts extends Component {
   state = {
@@ -39,13 +40,7 @@ class UserPosts extends Component {
       );
     }
   };
-  loaderDiv = () => (
-    <div className="container text-align-c">
-      <div class="spinner-border text-primary " role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-  );
+
   render() {
     return (
       <div className="container">
@@ -53,9 +48,11 @@ class UserPosts extends Component {
         <div className="card ">
           <div className="card-header">Posts by the user</div>
           <div className="card-body">
-            {this.state.loading
-              ? this.loaderDiv()
-              : this.renderUserPosts(this.state.posts)}
+            {this.state.loading ? (
+              <Loader />
+            ) : (
+              this.renderUserPosts(this.state.posts)
+            )}
           </div>
         </div>
       </div>
