@@ -22,12 +22,9 @@ export class AddTodo extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} className="form-group mt-5">
-        <span onClick={this.onSubmit} className="add-btn">
-          Add
-        </span>
+      <form onSubmit={this.onSubmit} className="form-group mt-5 input-group">
         <input
-          className="form-control form-control-lg"
+          className="form-control "
           type="text"
           name="title"
           placeholder="Add item"
@@ -36,6 +33,11 @@ export class AddTodo extends Component {
           onChange={this.onChange}
           autoComplete="off"
         />
+        <div className="input-group-append">
+          <span onClick={this.onSubmit} className="btn btn-info">
+            Add
+          </span>
+        </div>
       </form>
     );
   }

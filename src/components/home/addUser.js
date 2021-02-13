@@ -36,11 +36,12 @@ class AddUser extends Component {
     return (
       <div className="container">
         <form className="form-group" onSubmit={this.onSubmit}>
-          <div className="card-header">Add User</div>
-          <div className="card-body">
+          <div className="card-header border-light">Add User</div>
+          <br />
+          <div className="card">
             <input
               type="text"
-              className="form-control"
+              className="form-control mb-1 border-light"
               name="username"
               placeholder="Enter Username"
               value={username}
@@ -48,7 +49,7 @@ class AddUser extends Component {
             />
             <input
               type="text"
-              className="form-control"
+              className="form-control mb-1 border-light"
               name="name"
               placeholder="Enter Name"
               value={name}
@@ -56,7 +57,7 @@ class AddUser extends Component {
             />
             <input
               type="number"
-              className="form-control"
+              className="form-control mb-1 border-light"
               name="phone"
               placeholder="Enter Phone Number"
               value={phone}
@@ -64,7 +65,7 @@ class AddUser extends Component {
             />
             <input
               type="email"
-              className="form-control"
+              className="form-control mb-1 border-light"
               name="email"
               placeholder="Enter Email"
               value={email}
@@ -72,7 +73,7 @@ class AddUser extends Component {
             />
             <button
               type="submit"
-              class="btn btn-primary mb-2"
+              class="btn btn-primary mt-2"
               onClick={this.onSubmit}
             >
               Submit

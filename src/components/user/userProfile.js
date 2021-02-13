@@ -36,11 +36,11 @@ class userProfile extends Component {
             return (
               <>
                 <tr className="bg-light " key={index}>
-                  <td>
+                  <td className="border-light">
                     {" "}
                     <strong>{key}</strong>{" "}
                   </td>
-                  <td>{val}</td>
+                  <td className=" border-light">{val}</td>
                 </tr>
               </>
             );
@@ -55,11 +55,11 @@ class userProfile extends Component {
           return (
             <>
               <tr className="bg-light " key={index}>
-                <td>
+                <td className="border-light">
                   {" "}
                   <strong>{key}</strong>{" "}
                 </td>
-                <td>{val}</td>
+                <td className="border-light">{val}</td>
               </tr>
             </>
           );
@@ -79,7 +79,9 @@ class userProfile extends Component {
           <div className="card">
             <table className="card-table table user-detail">
               {this.renderUserDetails(user)}
-              <th>Address</th>
+
+              <th className="border-light">Address</th>
+
               {this.renderUserAdd(address)}
             </table>
           </div>

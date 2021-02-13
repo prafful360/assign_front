@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
 import Loader from "../../core/Loader";
-
+import AddPost from "../../post/AddPost";
 class UserPosts extends Component {
   state = {
     posts: [],
     loading: false,
+    showAddPost: false,
   };
 
   componentDidMount() {
@@ -40,7 +41,21 @@ class UserPosts extends Component {
       );
     }
   };
-
+  addPost = (title, body) => {
+    axios
+      .post("https://jsonplaceholder.typicode.com/posts/", {
+        title,
+        body,
+      })
+      .then((res) =>
+        this.setState({
+          posts: [...this.state.posts, res.data],
+        })
+      );
+  };
+  onClick = (e) => {
+    this.setState({ showAddPost: true });
+  };
   render() {
     return (
       <div className="container">
@@ -53,6 +68,11 @@ class UserPosts extends Component {
             ) : (
               this.renderUserPosts(this.state.posts)
             )}
+            <button className="btn btn-primary" onClick={this.onClick}>
+              Add Post
+            </button>
+
+            {this.state.showAddPost ? <AddPost addPost={this.addPost} /> : ""}
           </div>
         </div>
       </div>

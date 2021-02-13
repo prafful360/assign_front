@@ -1,21 +1,24 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import Loader from "../../core/Loader";
 
 class UserAlbum extends Component {
   state = {
     albums: [],
     albumDetail: [],
+    loading: false,
   };
 
   async componentDidMount() {
+    this.setState({ loading: true });
     const userId = this.props.match.params.userId;
     const getAlbums = axios.get(
       `https://jsonplaceholder.typicode.com/users/${userId}/albums`
     );
     await getAlbums.then((res) => {
       const albums = res.data;
-      this.setState({ albums });
+      this.setState({ albums: albums, loading: false });
     });
   }
 
@@ -50,7 +53,11 @@ class UserAlbum extends Component {
         <div className="card ">
           <div className="card-header">Albums by the user</div>
           <div className="card-body">
-            {this.renderUserAlbums(this.state.albums)}
+            {this.state.loading ? (
+              <Loader />
+            ) : (
+              this.renderUserAlbums(this.state.albums)
+            )}
           </div>
         </div>
       </div>

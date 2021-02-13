@@ -101,3 +101,7 @@ button {
 .title {
   color: #b9b8b8;
 }
+.no-border {
+  border: 0;
+  box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+}

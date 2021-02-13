@@ -21,7 +21,7 @@ class Users extends Component {
         this.setState({ users: users, loading: false });
       });
   }
-  //create new todo
+  //create new user
   addUser = (username, name, phone, email) => {
     axios
       .post("https://jsonplaceholder.typicode.com/users/", {
@@ -51,7 +51,7 @@ class Users extends Component {
         <>
           {users.map((user, i) => (
             <div className="card bg-light mb-3 card-half" key={i}>
-              <div className="card-header">
+              <div className="card-header border-light">
                 {" "}
                 <strong>User: </strong>{" "}
                 <Link to={`/user/${user.id}`}>{user.username}</Link>
