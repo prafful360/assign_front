@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import { CSSTransitionGroup } from "react-transition-group";
 
 export class TodoItem extends Component {
   getStyle = () => {
@@ -9,13 +8,6 @@ export class TodoItem extends Component {
       color: this.props.todo.completed ? "#7a7a7a" : "#000",
     };
   };
-
-  // componentDidMount() {
-  //   let todos = Array.from(document.querySelectorAll(".item-wrapper"));
-  //   todos.forEach((todo, i) => {
-  //     todo.style.transitionDelay = i * 0.1 + 0.25 + "s";
-  //   });
-  // }
 
   render() {
     const { id, title, completed } = this.props.todo;
